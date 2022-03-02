@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+:root {
+    --ti-cursor-color: theme('colors.mint');
+}
+
+@layer components {
+    .card {
+        background-color: theme('colors.white');
+        border-radius: theme('borderRadius.lg');
+        padding: theme('spacing.6');
+        box-shadow: theme('boxShadow.xl');
+    }
+}
