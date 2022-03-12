@@ -19,7 +19,10 @@ const Navbar: NextPage = () => {
         <div className="mb-14">
             <nav className="z-10 top-0 fixed py-5 px-20 flex justify-between min-w-full bg-mint">
                 <div>
-                    <span className="text-2xl dark:text-white text-normal-dark cursor-pointer">
+                    <span
+                        className="text-2xl dark:text-white text-normal-dark cursor-pointer"
+                        onClick={() => router.push('/')}
+                    >
                         Blognil
                     </span>
                 </div>
@@ -43,7 +46,7 @@ const Navbar: NextPage = () => {
                                 Authors
                             </a>
                         </li>
-                        <li className='mx-4'>
+                        <li className="mx-4">
                             <span
                                 className="text-2xl dark:text-white text-normal-dark cursor-pointer"
                                 onClick={toggleMode}
