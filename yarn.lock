@@ -38,11 +38,6 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@coreui/icons@^3.0.0-alpha.0":
-  version "3.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-3.0.0-alpha.0.tgz#3216c338c6e75cbd05e70f0a862140adcd0e9f45"
-  integrity sha512-gh6eDOc5Hoku4So59y1/Q23HKlsb0VQLH8ttjZ4CoCgax/pyYPvMXLM2f8w1d2hTdyZf9dTGuNqO3hCLJAbacw==
-
 "@eslint/eslintrc@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.2.0.tgz#7ce1547a5c46dfe56e1e45c3c9ed18038c721c6a"
@@ -554,6 +549,11 @@ damerau-levenshtein@^1.0.7:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/damerau-levenshtein/-/damerau-levenshtein-1.0.8.tgz#b43d286ccbd36bc5b2f7ed41caf2d0aba1f8a6e7"
   integrity sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==
+
+dayjs@^1.10.8:
+  version "1.10.8"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.8.tgz#267df4bc6276fcb33c04a6735287e3f429abec41"
+  integrity sha512-wbNwDfBHHur9UOzNUjeKUOJ0fCb0a52Wx0xInmQ7Y8FstyajiV1NmK1e00cxsr9YrE9r7yAChE0VvpuY5Rnlow==
 
 debug@^2.6.9:
   version "2.6.9"
