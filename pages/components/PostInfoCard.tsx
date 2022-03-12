@@ -5,10 +5,10 @@ const axios = require('axios')
 
 interface Props {
     className?: string
-    title: string
-    preview: string
-    author: number
-    modified: string
+    title?: string
+    preview?: string
+    author?: number
+    modified?: string
 }
 
 interface AxiosResult {
@@ -36,8 +36,10 @@ const PostInfoCard: React.FC<Props> = props => {
             .catch((error: any) => console.error(error))
     }, [])
 
-    const createMarkup = (content: string) => {
-        return { __html: content }
+    const createMarkup = (content: string | undefined) => {
+        if (content) {
+            return { __html: content }
+        }
     }
 
     return (
@@ -52,7 +54,7 @@ const PostInfoCard: React.FC<Props> = props => {
                 </div>
                 <div>
                     <div className="text-lg">Author: {author?.name}</div>
-                    <div className="text-lg">Modified date: {props.modified}</div>
+                    <div className="text-lg">On: {props.modified}</div>
                 </div>
             </div>
         </>
