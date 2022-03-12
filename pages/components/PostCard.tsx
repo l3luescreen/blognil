@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
-import type { ApiPosts } from '../Types/wordpress'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import dayjs from 'dayjs'
+import type { ApiPost, AxiosResult } from '../Types/wordpress'
 import PostImage from './PostImage'
 import PostInfoCard from './PostInfoCard'
 
@@ -9,12 +12,10 @@ interface Props {
     className: string
 }
 
-interface AxiosResult {
-    data: ApiPosts[]
-}
-
 const PostCard: React.FC<Props> = props => {
-    const [contents, setContents] = useState<ApiPosts[]>([])
+    const router = useRouter()
+
+    const [contents, setContents] = useState<ApiPost[]>([])
 
     const payload = {
         params: {
@@ -22,6 +23,12 @@ const PostCard: React.FC<Props> = props => {
         },
         headers: {
             Authorization: process.env.NEXT_PUBLIC_AUTHORIZATION
+        }
+    }
+
+    const dateFormat = (date: string | undefined) => {
+        if (date) {
+            return dayjs(date).format('DD/MM/YYYY')
         }
     }
 
@@ -34,30 +41,25 @@ const PostCard: React.FC<Props> = props => {
             .catch((error: any) => console.error(error))
     }, [])
 
-    const createMarkup = (content: string) => {
-        return { __html: content }
-    }
-
     return (
         <>
-            {contents.map((item: ApiPosts, id: number) => {
+            {contents.map((item: ApiPost, id: number) => {
                 return (
-                    <div
-                        key={id}
-                        className="bg-white mb-14 card duration-500 flex flex-row overflow-hidden border hover:border hover:border-normal-dark"
-                    >
-                        <div className="relative">
-                            <PostImage featureImageId={item.featured_media} />
+                    <Link key={id} href={`/${item.slug}`} passHref>
+                        <div className="cursor-pointer bg-white mb-14 card duration-500 flex flex-row overflow-hidden border hover:border hover:border-mint">
+                            <div className="relative">
+                                <PostImage featureImageId={item.featured_media} />
+                            </div>
+                            <div className="text-normal-dark">
+                                <PostInfoCard
+                                    title={item.title.rendered}
+                                    preview={item.excerpt.rendered}
+                                    author={item.author}
+                                    modified={dateFormat(item?.modified)}
+                                />
+                            </div>
                         </div>
-                        <div className="text-normal-dark">
-                            <PostInfoCard
-                                title={item.title.rendered}
-                                preview={item.excerpt.rendered}
-                                author={item.author}
-                                modified={item.modified}
-                            />
-                        </div>
-                    </div>
+                    </Link>
                 )
             })}
         </>
