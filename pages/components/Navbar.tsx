@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 const Navbar: NextPage = () => {
+    const router = useRouter()
     const [isDarkmode, setIsDarkmode] = useState(true)
 
     const toggleMode = () => {
@@ -14,13 +16,38 @@ const Navbar: NextPage = () => {
     }
 
     return (
-        <>
-            <nav className="absolute p-5 flex justify-between min-w-full bg-mint">
+        <div className="mb-14">
+            <nav className="z-10 top-0 fixed py-5 px-20 flex justify-between min-w-full bg-mint">
                 <div>
-                    <span className="text-2xl dark:text-white text-normal-dark cursor-pointer">Blognil</span>
+                    <span className="text-2xl dark:text-white text-normal-dark cursor-pointer">
+                        Blognil
+                    </span>
                 </div>
-                <div>
-                    <span className="text-2xl dark:text-white text-normal-dark cursor-pointer" onClick={toggleMode}>
+                <div className="flex">
+                    <ul className="flex">
+                        <li className="mx-4">
+                            <span
+                                className="text-2xl dark:text-white text-normal-dark cursor-pointer"
+                                onClick={() => router.push('/')}
+                            >
+                                Home
+                            </span>
+                        </li>
+                        <li className="mx-4">
+                            <a href="#" className="text-2xl dark:text-white text-normal-dark">
+                                Category
+                            </a>
+                        </li>
+                        <li className="mx-4">
+                            <a href="#" className="text-2xl dark:text-white text-normal-dark">
+                                Authors
+                            </a>
+                        </li>
+                    </ul>
+                    <span
+                        className="mx-4 text-2xl dark:text-white text-normal-dark cursor-pointer"
+                        onClick={toggleMode}
+                    >
                         {isDarkmode && (
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +83,7 @@ const Navbar: NextPage = () => {
                     </span>
                 </div>
             </nav>
-        </>
+        </div>
     )
 }
 
