@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { ApiPosts } from '../Types/wordpress'
-import PostImage from '../components/PostImage'
+import PostImage from './PostImage'
+import PostInfoCard from './PostInfoCard'
 
 const axios = require('axios')
 
@@ -12,7 +13,7 @@ interface AxiosResult {
     data: ApiPosts[]
 }
 
-const Greeting: React.FC<Props> = props => {
+const PostCard: React.FC<Props> = props => {
     const [contents, setContents] = useState<ApiPosts[]>([])
 
     const payload = {
@@ -24,17 +25,13 @@ const Greeting: React.FC<Props> = props => {
         }
     }
 
-    const getPosts = () => {
+    useEffect(() => {
         axios
             .get(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/posts`, payload)
             .then((posts: AxiosResult) => {
                 setContents(posts.data)
             })
             .catch((error: any) => console.error(error))
-    }
-
-    useEffect(() => {
-        getPosts()
     }, [])
 
     const createMarkup = (content: string) => {
@@ -45,14 +42,20 @@ const Greeting: React.FC<Props> = props => {
         <>
             {contents.map((item: ApiPosts, id: number) => {
                 return (
-                    <div key={id} className='bg-white card mb-14'>
-                        <PostImage featureImageId={item.featured_media} />
-                        <div
-                            dangerouslySetInnerHTML={createMarkup(item.title.rendered)}
-                            className='text-normal-dark duration-500 text-xl p-7'
-                        ></div>
-                        <div>
-                            
+                    <div
+                        key={id}
+                        className="bg-white mb-14 card duration-500 flex flex-row overflow-hidden border hover:border hover:border-normal-dark"
+                    >
+                        <div className="relative">
+                            <PostImage featureImageId={item.featured_media} />
+                        </div>
+                        <div className="text-normal-dark">
+                            <PostInfoCard
+                                title={item.title.rendered}
+                                preview={item.excerpt.rendered}
+                                author={item.author}
+                                modified={item.modified}
+                            />
                         </div>
                     </div>
                 )
@@ -61,4 +64,4 @@ const Greeting: React.FC<Props> = props => {
     )
 }
 
-export default Greeting
+export default PostCard

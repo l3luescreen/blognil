@@ -14,3 +14,14 @@ export interface ApiPosts {
     author: number
     modified: string
 }
+
+export interface Author {
+    id: number
+    name: string
+    avatar_urls: {
+        24: string
+        48: string
+        96: string
+    }
+    slug: string
+}
