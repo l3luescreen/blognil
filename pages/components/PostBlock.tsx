@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import type { ApiPosts } from '../Types/wordpress'
-import Post from '../components/Post'
 import PostImage from '../components/PostImage'
 
 const axios = require('axios')
