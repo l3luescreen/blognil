@@ -38,6 +38,11 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@coreui/icons@^3.0.0-alpha.0":
+  version "3.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-3.0.0-alpha.0.tgz#3216c338c6e75cbd05e70f0a862140adcd0e9f45"
+  integrity sha512-gh6eDOc5Hoku4So59y1/Q23HKlsb0VQLH8ttjZ4CoCgax/pyYPvMXLM2f8w1d2hTdyZf9dTGuNqO3hCLJAbacw==
+
 "@eslint/eslintrc@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.2.0.tgz#7ce1547a5c46dfe56e1e45c3c9ed18038c721c6a"
