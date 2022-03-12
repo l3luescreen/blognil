@@ -38,13 +38,13 @@ const PostImage: React.FC<ImageProps> = ({ featureImageId }) => {
     return (
         <>
             {featureImage && (
-                <div className='relative h-60'>
+                <div className="h-64 w-64 overflow-hidden">
                     <Image
                         src={featureImage}
                         alt={imageAlt}
-                        layout='fill'
-                        objectFit='cover'
-                        objectPosition='50% 50%'
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="50% 50%"
                     />
                 </div>
             )}
