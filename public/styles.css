@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Hubballi', cursive;
+    @apply dark:bg-normal-dark;
+    @apply duration-500;
 }
 
 :root {
@@ -14,7 +16,9 @@ body {
     .card {
         background-color: theme('colors.white');
         border-radius: theme('borderRadius.lg');
-        padding: theme('spacing.6');
-        box-shadow: theme('boxShadow.xl');
+        box-shadow: theme('boxShadow.lg');
+        @apply shadow-lg;
+        @apply dark:shadow-slate-500;
+
     }
 }
