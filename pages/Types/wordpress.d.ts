@@ -1,4 +1,4 @@
-export interface ApiPosts {
+export interface ApiPost {
     id: number
     slug: string
     featured_media: number
@@ -24,4 +24,12 @@ export interface Author {
         96: string
     }
     slug: string
+}
+
+export interface AxiosResult {
+    data: ApiPost[]
+}
+
+export interface AxiosResultSingle {
+    data: ApiPosts
 }
