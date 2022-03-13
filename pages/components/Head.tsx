@@ -9,10 +9,6 @@ const Head: React.FC<Props> = props => (
         <title>{props.title}</title>
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' />
-        <link
-            href='https://fonts.googleapis.com/css2?family=Hubballi&display=swap'
-            rel='stylesheet'
-        />
     </NextHead>
 )
 
