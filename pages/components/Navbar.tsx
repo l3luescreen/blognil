@@ -51,7 +51,7 @@ const Navbar: NextPage = () => {
                                 className="text-2xl dark:text-white text-normal-dark cursor-pointer"
                                 onClick={() => router.push('/Categories')}
                             >
-                                Category
+                                Categories
                             </span>
                         </li>
                         <li className="mx-4">
