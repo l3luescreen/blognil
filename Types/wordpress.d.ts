@@ -26,6 +26,14 @@ export interface Author {
     slug: string
 }
 
+export interface Category {
+    id: number
+    count: number
+    description: string
+    name: string
+    slug: string
+}
+
 export interface AxiosResult {
     data: ApiPost[]
 }

@@ -1,45 +1,55 @@
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
 import dayjs from 'dayjs'
-import type { ApiPost, AxiosResult } from '../Types/wordpress'
+import type { ApiPost, AxiosResult } from '../../Types/wordpress'
 import PostImage from './PostImage'
 import PostInfoCard from './PostInfoCard'
 
 const axios = require('axios')
 
 interface Props {
-    className: string
+    searchOption: string
+    search?: number
 }
 
 const PostCard: React.FC<Props> = props => {
-    const router = useRouter()
-
     const [contents, setContents] = useState<ApiPost[]>([])
-
-    const payload = {
-        params: {
-            per_page: 100
-        },
-        headers: {
-            Authorization: process.env.NEXT_PUBLIC_AUTHORIZATION
-        }
-    }
 
     const dateFormat = (date: string | undefined) => {
         if (date) {
             return dayjs(date).format('DD/MM/YYYY')
         }
     }
+    const payload = {
+        params: {},
+        headers: {
+            Authorization: process.env.NEXT_PUBLIC_AUTHORIZATION
+        }
+    }
 
-    useEffect(() => {
+    const search = () => {
         axios
             .get(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/posts`, payload)
             .then((posts: AxiosResult) => {
                 setContents(posts.data)
             })
             .catch((error: any) => console.error(error))
-    }, [])
+    }
+
+    useEffect(() => {
+        if (props.searchOption === 'all') {
+            payload.params = { per_page: 100 }
+        } else if (props.searchOption === 'category') {
+            payload.params = { per_page: 100, categories: props.search }
+        } else if (props.searchOption === 'author') {
+            payload.params = { per_page: 100, author: props.search }
+        }
+        search()
+
+        return () => {
+            setContents([])
+        }
+    }, [props.search])
 
     return (
         <>

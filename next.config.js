@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['fswd-wp.devnss.com'],
+    domains: ['fswd-wp.devnss.com', 'secure.gravatar.com'],
   },
 }
 

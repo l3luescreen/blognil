@@ -1,19 +1,29 @@
 import type { NextPage } from 'next'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 const Navbar: NextPage = () => {
     const router = useRouter()
-    const [isDarkmode, setIsDarkmode] = useState(true)
+    // const [isDarkmode, setIsDarkmode] = useState(true)
 
-    const toggleMode = () => {
-        setIsDarkmode(!isDarkmode)
+    // const toggleMode = () => {
+    //     setIsDarkmode(!isDarkmode)
+    //     localStorage.setItem('dark', isDarkmode.toString())
 
-        if (isDarkmode) {
-            document.documentElement.classList.add('dark')
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
-    }
+    //     if (localStorage.getItem('dark') === 'true') {
+    //         document.documentElement.classList.add('dark')
+    //     } else {
+    //         document.documentElement.classList.remove('dark')
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     if (localStorage.getItem('dark') === 'true') {
+    //         document.documentElement.classList.add('dark')
+    //     } else {
+    //         document.documentElement.classList.remove('dark')
+    //     }
+    //     setIsDarkmode(localStorage.getItem('dark') === 'true')
+    // }, [])
 
     return (
         <div className="mb-14">
@@ -37,16 +47,22 @@ const Navbar: NextPage = () => {
                             </span>
                         </li>
                         <li className="mx-4">
-                            <a href="#" className="text-2xl dark:text-white text-normal-dark">
-                                Category
-                            </a>
+                            <span
+                                className="text-2xl dark:text-white text-normal-dark cursor-pointer"
+                                onClick={() => router.push('/Categories')}
+                            >
+                                Categories
+                            </span>
                         </li>
                         <li className="mx-4">
-                            <a href="#" className="text-2xl dark:text-white text-normal-dark">
+                            <span
+                                className="text-2xl dark:text-white text-normal-dark cursor-pointer"
+                                onClick={() => router.push('/Authors')}
+                            >
                                 Authors
-                            </a>
+                            </span>
                         </li>
-                        <li className="mx-4">
+                        {/* <li className="mx-4">
                             <span
                                 className="text-2xl dark:text-white text-normal-dark cursor-pointer"
                                 onClick={toggleMode}
@@ -84,7 +100,7 @@ const Navbar: NextPage = () => {
                                     </svg>
                                 )}
                             </span>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </nav>
