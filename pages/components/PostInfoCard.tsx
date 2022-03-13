@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { Author } from '../Types/wordpress'
+import type { Author } from '../../Types/wordpress'
 
 const axios = require('axios')
 
@@ -19,14 +19,10 @@ const PostInfoCard: React.FC<Props> = props => {
     const [author, setAuthor] = useState<Author>()
 
     const payload = {
-        params: {
-            per_page: 100
-        },
         headers: {
             Authorization: process.env.NEXT_PUBLIC_AUTHORIZATION
         }
     }
-
     useEffect(() => {
         axios
             .get(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/users/${props.author}`, payload)
@@ -34,7 +30,7 @@ const PostInfoCard: React.FC<Props> = props => {
                 setAuthor(author.data)
             })
             .catch((error: any) => console.error(error))
-    }, [])
+    }, [author])
 
     const createMarkup = (content: string | undefined) => {
         if (content) {
