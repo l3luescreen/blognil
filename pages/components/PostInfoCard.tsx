@@ -28,6 +28,7 @@ const PostInfoCard: React.FC<Props> = props => {
             .get(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/users/${props.author}`, payload)
             .then((author: AxiosResult) => {
                 setAuthor(author.data)
+
             })
             .catch((error: any) => console.error(error))
 

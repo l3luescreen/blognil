@@ -4,6 +4,7 @@ const axios = require('axios')
 
 interface Props {
     postId?: number
+    refresh: Function
 }
 
 const CommentForm: React.FC<Props> = props => {
@@ -41,6 +42,7 @@ const CommentForm: React.FC<Props> = props => {
             )
             setComment('')
             setFormallowed(false)
+            props.refresh()
         } catch (error: any) {
             console.log(error)
             setErrorMsg('Something went wrong!')

@@ -39,6 +39,7 @@ const Content: React.FC<Props> = props => {
             .then((categoriesResult: AxiosResult) => {
                 setCategories(categoriesResult.data)
                 filteredCategories()
+
             })
             .catch((error: any) => console.error(error))
     }, [props.author])

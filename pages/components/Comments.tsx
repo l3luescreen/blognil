@@ -24,6 +24,16 @@ const Comments: React.FC<Props> = props => {
             Authorization: process.env.NEXT_PUBLIC_AUTHORIZATION
         }
     }
+
+    const refresh = () => {
+        axios
+            .get(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/comments`, payload)
+            .then((commentResult: AxiosResult) => {
+                setComments(commentResult.data)
+                console.log(commentResult)
+            })
+            .catch((error: any) => console.error(error))
+    }
     useEffect(() => {
         axios
             .get(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/comments`, payload)
@@ -31,13 +41,13 @@ const Comments: React.FC<Props> = props => {
                 setComments(commentResult.data)
             })
             .catch((error: any) => console.error(error))
-    }, [props.postId, comments])
+    }, [props.postId])
 
     return (
         <div className="card flex flex-col justify-around p-12 text-normal-dark my-4">
             <span className="text-5xl text-center">{comments?.length} Comments</span>
             <div className="flex flex-col justify-around p-24 text-normal-dark">
-                <CommentCard comments={comments} postId={props.postId} />
+                <CommentCard comments={comments} postId={props.postId} refresh={refresh} />
             </div>
         </div>
     )
