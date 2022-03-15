@@ -33,6 +33,11 @@ const PostImage: React.FC<ImageProps> = ({ featureImageId }) => {
                 })
                 .catch((error: any) => console.error(error))
         }
+
+        return () => {
+            setFeatureImage('')
+            setImageAlt('')
+        }
     }, [featureImageId])
 
     return (
