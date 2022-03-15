@@ -6,11 +6,10 @@ import CommentForm from './CommentForm'
 
 import dayjs from 'dayjs'
 
-const axios = require('axios')
-
 interface Props {
     postId?: number
     comments?: Comment[]
+    refresh: Function
 }
 
 const CommentCard: React.FC<Props> = props => {
@@ -33,7 +32,7 @@ const CommentCard: React.FC<Props> = props => {
 
     return (
         <>
-            <CommentForm postId={props.postId} />
+            <CommentForm postId={props.postId} refresh={props.refresh} />
             {comments?.map((item: Comment, id: number) => {
                 return (
                     <div
