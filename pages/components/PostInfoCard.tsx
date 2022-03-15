@@ -16,7 +16,7 @@ interface AxiosResult {
 }
 
 const PostInfoCard: React.FC<Props> = props => {
-    const [author, setAuthor] = useState<Author>()
+    const [author, setAuthor] = useState<Author | void>()
 
     const payload = {
         headers: {
@@ -30,7 +30,11 @@ const PostInfoCard: React.FC<Props> = props => {
                 setAuthor(author.data)
             })
             .catch((error: any) => console.error(error))
-    }, [author])
+
+        return () => {
+            setAuthor()
+        }
+    }, [])
 
     const createMarkup = (content: string | undefined) => {
         if (content) {

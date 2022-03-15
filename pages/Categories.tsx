@@ -10,6 +10,7 @@ const axios = require('axios')
 
 interface CategoryResult {
     data: Category[]
+    selected: string
 }
 
 const Category: NextPage = () => {
@@ -62,7 +63,7 @@ const Category: NextPage = () => {
                     })}
                 </div>
                 <div className="min-w-full min-h-screen">
-                    {selected && <PostCard searchOption='category' search={selected} />}
+                    {selected && <PostCard searchOption="category" search={selected} />}
                 </div>
             </div>
         </>

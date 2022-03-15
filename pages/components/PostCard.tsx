@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import dayjs from 'dayjs'
-import type { ApiPost, AxiosResult } from '../../Types/wordpress'
+import type { ApiPost } from '../../Types/wordpress'
 import PostImage from './PostImage'
 import PostInfoCard from './PostInfoCard'
 
@@ -10,6 +10,10 @@ const axios = require('axios')
 interface Props {
     searchOption: string
     search?: number
+}
+
+interface AxiosResult {
+    data: ApiPost[]
 }
 
 const PostCard: React.FC<Props> = props => {

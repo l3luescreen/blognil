@@ -7,8 +7,8 @@ interface Props {
 const Head: React.FC<Props> = props => (
     <NextHead>
         <title>{props.title}</title>
-        <link rel='preconnect' href='https://fonts.googleapis.com' />
-        <link rel='preconnect' href='https://fonts.gstatic.com' />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
     </NextHead>
 )
 

@@ -4,7 +4,6 @@
 
 body {
     font-family: 'Hubballi', cursive;
-    @apply dark:bg-normal-dark;
     @apply duration-500;
 }
 
@@ -18,7 +17,6 @@ body {
         border-radius: theme('borderRadius.lg');
         box-shadow: theme('boxShadow.lg');
         @apply shadow-lg;
-        @apply dark:shadow-darker-mint;
 
     }
 }
