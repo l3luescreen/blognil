@@ -11,6 +11,7 @@ export interface ApiPost {
     content: {
         rendered: string
     }
+    categories: number[]
     author: number
     modified: string
 }
@@ -34,10 +35,18 @@ export interface Category {
     slug: string
 }
 
-export interface AxiosResult {
-    data: ApiPost[]
-}
-
-export interface AxiosResultSingle {
-    data: ApiPosts
+export interface Comment {
+    id: number
+    post: number
+    author: number
+    author_name: string
+    content: {
+        rendered: string
+    }
+    author_avatar_urls: {
+        24: string
+        48: string
+        96: string
+    }
+    date: string
 }
